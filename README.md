@@ -1,116 +1,77 @@
-# LLM Scribe Pro v3.0.0 🎯
+LLM Scribe Pro
+一个专为大语言模型（LLM）对话设计的本地化、隐私优先的剪贴板记录与知识库管理工具。它拥有现代化的深色主题界面，能够自动监听剪贴板内容，帮助你高效地整理、归档和回溯与 AI 的每一次对话。
 
-### 📌 简介 / Introduction
-**LLM Scribe Pro** 是一款为 AI 对话打造的现代化记录与知识库管理工具。它专注本地化、隐私与核心稳定性，自动监控剪贴板，捕获并智能化管理每一次 AI 对话，是构建私有化知识资产的得力助手。
+LLM Scribe Pro is a localized, privacy-first clipboard logging and knowledge base management tool designed specifically for Large Language Model (LLM) interactions. Featuring a modern dark theme interface, it automatically monitors clipboard content, helping you efficiently organize, archive, and review every AI conversation.
 
-**LLM Scribe Pro** is a modern recording and knowledge base management tool designed for AI conversations. Focusing on localization, privacy, and core stability, it automatically monitors the clipboard, captures, and intelligently organizes every AI dialogue, empowering you to build private knowledge assets.
+核心特性 (Core Features)
+自动速记模式 (Auto-Scribe Mode): 开启后自动监听剪贴板，一旦复制新内容即刻追加到当前会话，无需手动粘贴。
+文件夹层级管理 (Hierarchical Folder Management): 支持创建文件夹（归档），将会话按主题分类（如“编程”、“写作”、“翻译”），保持知识库井井有条。
+智能摘要锚点 (Smart Summary Anchors): 选中关键文本一键生成“标签”，双击标签即可瞬间跳转回原文位置，方便在长对话中快速定位。
+窗口叠加与穿透模式 (Window Overlay & Click-Through Mode): 支持窗口透明度调节与“点击穿透”。您可以让窗口半透明悬浮在其他应用之上，一边工作一边记录，互不干扰。
+本地数据安全 (Local Data Security): 所有数据以 JSON 格式保存在本地，支持自定义存储路径和单条会话导出，完全离线运行，保障隐私。
+现代化深色界面 (Modern Dark UI): 采用专业、护眼的深色主题设计，视觉体验舒适，适合长时间专注工作。
 
----
+界面预览 (UI Preview)
+界面采用经典的深色配色方案，布局清晰，分为三个主要区域：
 
-### 🌟 核心功能 / Key Features
-- **智能速记 (Scribe Mode)**: 自动捕获剪贴板，实时同步对话记录。
-- **Modern UI**: 基于 `CustomTkinter` 的现代化深色主题界面，布局清晰，响应迅速。
-- **安全存储 (Secure Storage)**: 数据存储于 `%APPDATA%`，支持硬件绑定加密，100% 离线运行。
-- **分层管理 (Hierarchical Org)**: 支持文件夹层级归档、拖拽式组织与会话切换。
-- **独立运行 (Standalone EXE)**: 完美打包的独立可执行文件，无控制台窗口，无需 Python 环境，开箱即用。
+左侧导航栏 (Left Sidebar): 目录树，用于管理所有文件夹和会话。
+中央编辑区 (Center Editing Area): 主工作区，显示和编辑会话内容，实时显示捕获的文本。
+右侧摘要面板 (Right Summary Panel): 显示当前会话的所有“标签”（摘要锚点），支持快速导航。
 
----
+技术栈 (Tech Stack)
+开发语言 (Language): Python 3.x
+GUI 框架 (GUI Framework): Tkinter (Python 标准库)
+系统 API (System API): Windows API (通过 ctypes 调用) - 用于实现窗口穿透和透明度控制
+数据存储 (Data Storage): JSON
 
-### 🆕 版本重大变更 (v3.0 vs v2.0) / What's New
-#### 🇨🇳 中文说明
-1.  **稳定性重构与功能聚焦**：本版本移除了 v2.0 的“窗口穿透模式”，彻底解决了该高级功能带来的潜在系统兼容性问题与界面卡顿风险。我们将开发重心回归到**记录、管理与检索**的核心体验上，实现了企业级的运行稳定性。
-2.  **可执行文件 (EXE) 打包强化**：针对 v2.0 的打包配置进行了深度优化，生成的 EXE 文件体积更小，启动更快，内存占用更低，且彻底杜绝了运行时控制台的意外闪现，提供纯粹的应用程序体验。
-3.  **底层监听引擎再优化**：在 v2.0 基于 Win32 API 重写的引擎基础上，进一步优化了多线程调度与剪贴板内容变更检测逻辑，减少了不必要的系统调用，使后台监听更高效、对前台操作干扰更低。
-4.  **数据持久化与恢复增强**：改进了 v2.0 的数据保存机制，增加了更健壮的异常处理与自动恢复流程。即使在非正常退出（如强制结束进程）后，也能最大限度地保护用户数据不丢失，并在下次启动时尝试恢复。
-5.  **用户体验细节打磨**：
-    *   **更流畅的界面交互**：优化了文件夹树、会话列表的加载与渲染性能。
-    *   **更清晰的操作反馈**：为关键操作（如开启速记、添加标签）添加了更明确的视觉与状态提示。
-    *   **更完善的数据导出**：支持单条及批量会话导出，格式更规范。
+安装与运行 (Installation & Run)
+本项目基于 Python 标准库开发，无需安装任何第三方依赖，开箱即用。
 
-#### 🇺🇸 English Version
-1.  **Stability Refactor & Focused Functionality**: This release removes the "Window Click-Through Mode" from v2.0, completely eliminating the potential system compatibility issues and UI stutter risks associated with that advanced feature. We have refocused development on the core experience of **recording, management, and retrieval**, achieving enterprise-grade runtime stability.
-2.  **Enhanced Executable (EXE) Packaging**: The PyInstaller configuration from v2.0 has been deeply optimized. The resulting EXE is smaller, starts faster, uses less memory, and completely prevents the accidental flashing of a console window, delivering a pure application experience.
-3.  **Core Monitoring Engine Re-optimization**: Building upon the Win32 API-based engine rewritten in v2.0, we further optimized multi-thread scheduling and clipboard change detection logic. This reduces unnecessary system calls, making background monitoring more efficient and less intrusive to foreground operations.
-4.  **Enhanced Data Persistence & Recovery**: Improved upon v2.0's data-saving mechanism by adding more robust exception handling and automatic recovery workflows. User data is better protected against loss even after abnormal termination (e.g., force-closing the process), with recovery attempts on the next launch.
-5.  **Polished User Experience Details**:
-    *   **Smoother UI Interaction**: Optimized the loading and rendering performance of the folder tree and session list.
-    *   **Clearer Operation Feedback**: Added more distinct visual and status cues for key operations (e.g., enabling Scribe Mode, adding tags).
-    *   **Improved Data Export**: Supports single and batch session export with more standardized formats.
+获取代码 (Get the Code) 将主程序文件保存为 llm_scribe_modern.py。
 
----
+运行程序 (Run the Application) 在终端或命令行中，导航到文件所在目录并执行：
 
-### 🛠️ 技术栈 / Tech Stack
-- **UI**: https://github.com/TomSchimansky/CustomTkinter (Modern UI Components)
-- **Core**: Python 3.9+, https://docs.python.org/3/library/ctypes.html (Windows API)
-- **Security**: https://github.com/pyca/cryptography (PBKDF2 + Fernet)
-- **Build**: https://www.pyinstaller.org/ (`LLMScribePro.spec`)
+python llm_scribe_modern.py
 
----
+首次使用 (First Run)
+程序会在运行目录下自动生成 llm_scribe_data.json 作为核心数据库文件。
+您可以点击顶部的 路径 (Path) 按钮更改数据文件的保存位置。
 
-### 📦 安装与运行 / Installation & Usage
-#### 对于最终用户 / For End Users
-1.  前往 https://github.com/yourusername/llm-scribe-pro/releases 页面下载 `LLM_Scribe_Pro_v3.0.0.exe`。
-2.  双击运行即可，所有数据将自动存储于您的 `%APPDATA%` 目录。
+使用指南 (User Guide)
+1. 开始速记 (Start Scribing)
+点击顶部工具栏的 🚀 速记 (Scribe) OFF 按钮，将其切换为 ON 状态。此后，在任何地方（例如从 ChatGPT、代码编辑器、网页）复制文本，内容都会自动带时间戳添加到当前激活的会话中。
 
-#### 对于开发者 / For Developers
-```powershell
-# 克隆仓库并进入目录
-git clone https://github.com/yourusername/llm-scribe-pro.git
-cd llm-scribe-pro
+2. 管理知识与会话 (Manage Knowledge & Sessions)
+新建会话 (New Session): 点击左侧导航栏底部的 + 新建 (New) 按钮。
+创建文件夹 (Create Folder): 点击 📁 归档 (Folder) 按钮创建分类文件夹。
+组织内容 (Organize): 在左侧树状图中，通过右键菜单的“移动到 (Move to Folder)”选项，将会话拖入文件夹进行归类。
+导出数据 (Export): 在左侧列表右键点击会话，选择“导出此会话 (Export Session)”，可将其单独导出为 JSON 或 TXT 格式。
 
-# 安装依赖
-pip install -r requirements.txt
+3. 使用标签导航 (Navigate with Tags)
+添加标签 (Add Tag):
+在右侧面板的输入框中输入描述，点击 ➕ 添加标记 (Add Tag)。
+快捷方式: 在中央编辑区选中一段文本，右键选择 🔖 设为摘要 (Tag as Summary)，可直接用选中文本创建标签。
+快速跳转 (Quick Jump): 在右侧标签列表中双击任一标签，编辑区将自动滚动并高亮显示对应的原文行。
 
-# 运行程序
-python app.py
+4. 启用叠加模式 (Enable Overlay Mode)
+勾选顶部工具栏的 👻 穿透 (Click-Through) 复选框。
+使用旁边的滑块降低窗口 透明度 (Opacity)。
+此时窗口将变为半透明且允许鼠标点击“穿透”到后方应用程序，实现无干扰的悬浮记录。
 
-# （可选）使用优化配置打包 EXE
-python build_exe.py
-# 或直接使用 PyInstaller
-pyinstaller LLMScribePro.spec
-```
+文件说明 (File Description)
+文件名 (File Name)	描述 (Description)
+llm_scribe_modern.py	主程序源代码文件。
+llm_scribe_data.json	核心数据库文件，包含所有会话、文件夹和标签数据。程序自动生成。
+scribe_config.json	配置文件，记录用户自定义的数据文件存储路径。程序自动生成。
 
----
+安全与隐私 (Security & Privacy)
+输入清洗 (Input Sanitization): 程序会自动过滤剪贴板内容中的不可打印字符，防止数据污染和潜在的格式错误。
+路径安全 (Path Safety): 包含安全检查，禁止将数据文件保存为可执行文件扩展名（如 .exe, .bat 等），防止误操作。
+完全离线 (Fully Offline): 程序无需网络连接，所有操作和数据处理均在本地计算机上进行，确保您的对话内容隐私绝对安全。
 
-### 📁 项目结构 / Project Structure (v3.0)
-```
-LLM_Scribe_Pro/
-├── app.py                      # 应用程序主入口
-├── core/                       # 核心逻辑模块
-│   ├── __init__.py
-│   ├── clipboard_monitor.py    # 基于 Win32 API 的剪贴板监听引擎
-│   ├── data_manager.py         # 数据持久化与加密管理
-│   ├── session_manager.py      # 会话与文件夹逻辑
-│   └── text_sanitizer.py       # 文本清洗与格式化
-├── ui/                         # 用户界面模块
-│   ├── __init__.py
-│   ├── main_window.py          # 主窗口类
-│   ├── widgets/                # 自定义控件
-│   └── styles.py               # 主题与样式定义
-├── utils/                      # 工具函数
-│   ├── __init__.py
-│   ├── logger.py               # 日志系统
-│   └── helpers.py              # 通用助手函数
-├── build_exe.py                # EXE 打包脚本
-├── LLMScribePro.spec           # PyInstaller 打包配置文件
-└── requirements.txt            # Python 依赖列表
-```
+更新日志 (Changelog)
+v2.0: 重构了数据结构，支持文件夹层级管理；增加了自定义数据文件路径功能；增强了输入安全性处理。
+v1.0: 初始版本，实现了基础的剪贴板监听与内容记录功能。
 
----
-
-### 🔧 配置与数据 / Configuration & Data
-- **配置文件路径**: `%APPDATA%\LLM Scribe Pro\config.json`
-- **数据存储路径**: `%APPDATA%\LLM Scribe Pro\data\`
-- **日志文件路径**: `%APPDATA%\LLM Scribe Pro\logs\`
-
-**⚠️ 注意 / Note**: 首次运行 v3.0 时会自动检测并迁移 v2.0 的用户数据。建议在升级前手动备份 `%APPDATA%\LLM Scribe Pro\` 目录。
-
----
-
-### 📄 许可证 / License
+许可证 (License)
 本项目基于 LICENSE 开源。
-
----
-
-**让每一次 AI 对话都成为可追溯、可管理的知识资产。**  
-**Turn every AI conversation into a traceable, manageable knowledge asset.**
